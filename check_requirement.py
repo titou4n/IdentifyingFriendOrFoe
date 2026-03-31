@@ -3,9 +3,10 @@ import subprocess
 import platform
 
 REQUIRED_PACKAGES = {
-    "cv2":       "opencv-python",
-    "pygame": "pygame",
-    "pyttsx3":   "pyttsx3",
+    "cv2":"opencv-python",
+    "pygame":"pygame",
+    "pyttsx3":"pyttsx3",
+    "pynput":"pynput",
 }
 
 PLATFORM_EXTRAS = {
@@ -66,13 +67,3 @@ def check_and_install_libraries() -> bool:
         print("[ERROR] Some installations failed. Check the errors listed above.")
 
     return all_ok
-
-
-if __name__ == "__main__":
-    ok = check_and_install_libraries()
-    if ok:
-        print("\nLoading final verification...")
-        import cv2
-        import pygame
-        print(f"  OpenCV version : {cv2.__version__}")
-        print(f"  pygame      : {pygame.__version__}")

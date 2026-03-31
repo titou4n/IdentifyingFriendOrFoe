@@ -6,8 +6,12 @@ import cv2 as cv
 import pygame
 from pathlib import Path
 
+from check_requirement import check_and_install_libraries
+
 
 class Config():
+
+    check_and_install_libraries()
 
     #__Audio___
     engine = pyttsx3.init()
