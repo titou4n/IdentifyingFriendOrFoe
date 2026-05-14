@@ -4,7 +4,7 @@ from datetime import datetime
 from config import Config
 from tools.cascade_classifier import MyCascadeClassifier
 from tools.tools_image import ToolsImage
-from more_about_project.more_code_main import detectsFacesWebcam
+from detects_faces_webcam import detectsFacesWebcam
 
 config = Config()
 my_cascade_classifier = MyCascadeClassifier()
@@ -12,7 +12,7 @@ tools_image = ToolsImage()
 
 
 def main():
-    for image in config.contents:
+    for image in config.IMAGE_FILES:
         print(f"\nMotion detected...{datetime.now()}")
         
 
@@ -32,7 +32,7 @@ def main():
 
         discharge_weapon = not my_cascade_classifier.just_find_eye_and_face_detection(img_gray=img_gray)
 
-        tools_image.print_result(img_gray=img_gray, image=image, discharge_weapon=discharge_weapon, play_songs=False)
+        tools_image.print_result(img_gray=img_gray, image=image, discharge_weapon=discharge_weapon, play_songs=config.PLAY_SONGS)
 
     config.engine.stop()
 

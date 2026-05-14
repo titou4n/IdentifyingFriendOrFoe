@@ -1,15 +1,13 @@
 import cv2 as cv
 from config import Config
 
-config = Config()
-
 class MyCascadeClassifier():
 
     def __init__(self):
-            pass
+            self.config = Config()
     
     def get_CascadeClassifier(self, name_haar):
-        return cv.CascadeClassifier(cv.data.haarcascades + config.DICT_HAAR[name_haar])
+        return cv.CascadeClassifier(cv.data.haarcascades + self.config.DICT_HAAR[name_haar])
     
     def eye_and_face_detection(self, img_gray) -> tuple[list, list]:
         # === Face detection ===

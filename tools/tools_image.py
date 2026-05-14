@@ -25,7 +25,7 @@ class ToolsImage():
         # -- Fire or stand down --
         if not discharge_weapon:
             if play_songs:
-                pygame.mixer.music.load(self.config.tone_path)
+                pygame.mixer.music.load(self.config.TONE_SOUND_PATH)
                 pygame.mixer.music.play()
             cv.imshow('Detected Faces', img_gray)
             cv.waitKey(2000)
@@ -39,7 +39,7 @@ class ToolsImage():
             cv.FONT_HERSHEY_PLAIN, 3, 255, 3,
         )
         if play_songs:
-            pygame.mixer.music.load(self.config.gunfire_path)
+            pygame.mixer.music.load(self.config.GUNFIRE_SOUND_PATH)
             pygame.mixer.music.play()
         cv.imshow('Mutant', img_gray)
         cv.waitKey(2000)
@@ -56,7 +56,7 @@ class ToolsImage():
         # -- Fire or stand down --
         if not discharge_weapon:
             if play_songs:
-                pygame.mixer.music.load(self.config.tone_path)
+                pygame.mixer.music.load(self.config.TONE_SOUND_PATH)
                 pygame.mixer.music.play()
             return
 
@@ -67,7 +67,7 @@ class ToolsImage():
         )
 
         if play_songs:
-            pygame.mixer.music.load(self.config.gunfire_path)
+            pygame.mixer.music.load(self.config.GUNFIRE_SOUND_PATH)
             pygame.mixer.music.play()
 
     def show_image(self, image):
