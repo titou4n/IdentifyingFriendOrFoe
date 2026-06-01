@@ -45,7 +45,7 @@ class ToolsImage():
         cv.waitKey(2000)
         cv.destroyWindow('Mutant')
 
-    def print_result_webcam(self, img_gray, image, discharge_weapon:bool, play_songs:bool = True) -> None:
+    def print_result_webcam(self, img_gray, image, detect_eyes:bool, play_songs:bool = True) -> None:
 
         #height, width = img_gray.shape
         height, width = img_gray.shape[:2]
@@ -54,17 +54,11 @@ class ToolsImage():
             pygame.mixer.init()
 
         # -- Fire or stand down --
-        if not discharge_weapon:
+        if detect_eyes:
             if play_songs:
                 pygame.mixer.music.load(self.config.TONE_SOUND_PATH)
                 pygame.mixer.music.play()
             return
-
-        cv.putText(
-            img_gray, 'FIRE!',
-            (int(width / 2) - 20, int(height / 2)),
-            cv.FONT_HERSHEY_PLAIN, 3, 255, 3,
-        )
 
         if play_songs:
             pygame.mixer.music.load(self.config.GUNFIRE_SOUND_PATH)

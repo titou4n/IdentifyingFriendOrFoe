@@ -1,3 +1,4 @@
+from datetime import datetime
 import cv2 as cv
 from tools.cascade_classifier import MyCascadeClassifier
 from tools.tools_image import ToolsImage
@@ -18,7 +19,7 @@ def detectsFacesWebcam(name_haar="face_alt"):
     print("[INFO] Camera started. Press 'q' to quit.")
  
     while True:
-        ret, frame = cap.read()  # ret = bool, frame = image
+        ret, frame = cap.read()
  
         if not ret:
             print("[ERROR] Failed to grab frame.")
@@ -33,7 +34,6 @@ def detectsFacesWebcam(name_haar="face_alt"):
             minNeighbors=3,
         )
 
-        # Draw a rectangle around each detected face
         color = (255, 255, 255)
         for (x, y, w, h) in rects:
             cv.rectangle(img=img_gray,
@@ -42,10 +42,15 @@ def detectsFacesWebcam(name_haar="face_alt"):
                             color=color,
                             thickness=2)
 
-        discharge_weapon = not my_cascade_classifier.eye_and_face_detection(img_gray)
- 
-        cv.imshow('Camera - detection', frame)
-        tools_image.print_result_webcam(img_gray=img_gray, image=frame, discharge_weapon=discharge_weapon)
+        detect_eyes = not my_cascade_classifier.just_find_eye_and_face_detection(img_gray=img_gray)
+        
+        if detect_eyes :
+            print(f"{datetime.now()} Human detected")
+        else :
+            print(f"{datetime.now()} NO Human detected")
+
+        cv.imshow('Camera - detection', img_gray)
+        tools_image.print_result_webcam(img_gray=img_gray, image=frame, detect_eyes=detect_eyes)
  
         # Press 'q' to quit
         if cv.waitKey(1) & 0xFF == ord('q'):
