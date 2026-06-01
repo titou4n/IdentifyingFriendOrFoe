@@ -54,7 +54,7 @@ class ToolsImage():
             pygame.mixer.init()
 
         # -- Fire or stand down --
-        if detect_eyes:
+        if not detect_eyes:
             if play_songs:
                 pygame.mixer.music.load(self.config.TONE_SOUND_PATH)
                 pygame.mixer.music.play()
