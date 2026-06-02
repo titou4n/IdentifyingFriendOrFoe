@@ -40,7 +40,7 @@ def main() -> None:
 
 if __name__ == "__main__":
     while True:
-        choice = input("Enter 1 for image processing or 2 for webcam: ")
+        choice = input("\nEnter 1 for image processing or 2 for webcam: ")
         if choice == "1":
             main()
         elif choice == "2":
